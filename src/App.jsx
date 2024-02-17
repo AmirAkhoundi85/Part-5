@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css"
 import Blog from "./components/Blog";
 import blogService from "./services/blogs";
@@ -15,9 +15,9 @@ const App = () => {
   });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
-
   const [user, setUser] = useState(null);
+
+  const blogRef = useRef()
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -94,7 +94,7 @@ const App = () => {
     </>
   );
   const addBlog = async (newBlog) => {
-    
+
     blogService.setToken(user.token);
     const returnedBlog = await blogService.create(newBlog);
     setBlogs(blogs.concat(returnedBlog));
@@ -122,11 +122,11 @@ const App = () => {
             <button onClick={handleLogout}>Log out</button>
           </p>
           <Togglable buttonLabel="new blog">
-            <NewBlog addBlog={addBlog}/>
+            <NewBlog addBlog={addBlog} />
           </Togglable>
 
           {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} />
+              <Blog key={blog.id} blog={blog} />
           ))}
         </div>
       )}

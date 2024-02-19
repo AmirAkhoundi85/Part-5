@@ -8,6 +8,7 @@ const NewBlog = ({ addBlog }) => {
   });
   const handleSubmit = (event) => {
     event.preventDefault();
+    newBlog.likes=0;
     addBlog(newBlog);
     setNewBlog({
       title: "",

@@ -111,6 +111,10 @@ const App = () => {
     
   };
 
+  const removeBlog = async(id)=>{
+    await blogService.remove(id);
+   setBlogs(() => blogs.filter((blog) => blog.id !== id));
+  }
 
   return (
     <div>
@@ -129,7 +133,7 @@ const App = () => {
           </Togglable>
 
           {blogs.map((blog) => (
-              <Blog key={blog.id} blog={blog} />
+              <Blog key={blog.id} blog={blog} removeBlog={removeBlog}/>
           ))}
         </div>
       )}

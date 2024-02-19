@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import blogService from "../services/blogs";
-const Blog = ({ blog }) => {
+const Blog = ({ blog, removeBlog }) => {
   const [likes, setLikes] = useState(blog.likes);
   const [view, setView] = useState(false);
   const blogStyle = {
@@ -16,6 +16,11 @@ const Blog = ({ blog }) => {
     setLikes(likes + 1);
   };
 
+  const removeHandle= async()=>{
+    if (window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
+        removeBlog(blog.id);
+    }
+  } 
   return (
     <div style={blogStyle}>
       <div>
@@ -30,6 +35,7 @@ const Blog = ({ blog }) => {
             <button onClick={likePost}>Like</button>
           </div>
           <div>{blog.author}</div>
+          <button onClick={removeHandle}>remove</button>
         </div>
       )}
     </div>

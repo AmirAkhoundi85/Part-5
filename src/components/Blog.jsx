@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, name }) => {
   const [view, setView] = useState(false);
   const blogStyle = {
     paddingTop: 10,
@@ -12,18 +12,31 @@ const Blog = ({ blog }) => {
 
   return (
     <div style={blogStyle}>
-      <div>
-        <span>{blog.title} </span>
-        <button onClick={() => setView(!view)}>{view? "hide":"view"}</button>
-      </div>
-      {view && (
+      {view ? (
         <div>
-          <div>{blog.url}</div>
           <div>
-            <span>Likes {blog.likes} </span>
+            <span>
+              {blog.title} {blog.author}
+            </span>
+            <button onClick={() => setView(!view)}>
+              {view ? "hide" : "view"}
+            </button>
+          </div>
+          <div>
+            <a href={blog.url}>{blog.url}</a>
+          </div>
+          <div>
+            <span className="likes">Likes {blog.likes} </span>
             <button>Like</button>
           </div>
-          <div>{blog.author}</div>
+          <div>{name}</div>
+        </div>
+      ) : (
+        <div>
+          <span>{blog.title} </span>
+          <button onClick={() => setView(!view)}>
+            {view ? "hide" : "view"}
+          </button>
         </div>
       )}
     </div>

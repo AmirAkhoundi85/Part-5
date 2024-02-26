@@ -12,7 +12,7 @@ const Blog = ({ blog, removeBlog , name}) => {
   };
 
   const likePost = async () => {
-    await blogService.update(blog.id, { ...blog, likes: likes + 1 });
+    // await blogService.update(blog.id, { ...blog, likes: likes + 1 });
     setLikes(likes + 1);
   };
 

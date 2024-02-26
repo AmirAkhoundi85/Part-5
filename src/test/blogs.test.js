@@ -1,9 +1,11 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import Blog from "../components/Blog";
 import userEvent from "@testing-library/user-event";
 
+import App from "../App";
+import NewBlog from "../components/NewBlog";
 test("renders content", () => {
   const blog = {
     title: "JavaScript",
@@ -39,3 +41,4 @@ test("renders detailed content after clicking 'view' button", async () => {
   expect(div).toHaveTextContent("Likes 100");
   expect(div).toHaveTextContent(blog.url);
 });
+

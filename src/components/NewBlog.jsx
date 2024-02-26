@@ -19,10 +19,11 @@ const NewBlog = ({ addBlog }) => {
   return (
     <>
       <h2>Create New</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="new-blog" id="new-blog-form">
         <div>
           <label htmlFor="title">Title:</label>
           <input
+            id="title"
             value={newBlog.title}
             onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
           />

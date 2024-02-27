@@ -10,4 +10,19 @@ describe("Blog app", function () {
          cy.get("#password");
          cy.get("#login-btn");
   });
+  
+  describe("Login", function () {
+    it("succeeds with correct credentials", function () {
+      cy.get("#username").type("Ali10");
+      cy.get("#password").type("1234567");
+      cy.get("#login-btn").click();
+    });
+
+    it("fails with wrong credentials", function () {
+      cy.get("#username").type("David");
+      cy.get("#password").type("World154");
+      cy.get("#login-btn").click();
+      cy.contains("Wrong username or password");
+    });
+  });
 });

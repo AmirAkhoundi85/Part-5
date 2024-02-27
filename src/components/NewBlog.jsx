@@ -8,7 +8,7 @@ const NewBlog = ({ addBlog }) => {
   });
   const handleSubmit = (event) => {
     event.preventDefault();
-    newBlog.likes=0;
+    newBlog.likes = 0;
     addBlog(newBlog);
     setNewBlog({
       title: "",
@@ -29,20 +29,22 @@ const NewBlog = ({ addBlog }) => {
           />
         </div>
         <div>
-          <label htmlFor="title">Author:</label>
+          <label htmlFor="author">Author:</label>
           <input
+            id="author"
             value={newBlog.author}
             onChange={(e) => setNewBlog({ ...newBlog, author: e.target.value })}
           />
         </div>
         <div>
-          <label htmlFor="title">Url:</label>
+          <label htmlFor="url">Url:</label>
           <input
+            id="url"
             value={newBlog.url}
             onChange={(e) => setNewBlog({ ...newBlog, url: e.target.value })}
           />
         </div>
-        <button type="submit">Create</button>
+        <button type="submit" id="create-btn">Create</button>
       </form>
     </>
   );
